@@ -1,0 +1,21 @@
+[package]
+name = "ckb-system-scripts"
+version = "0.5.1"
+authors = ["Nervos Core Dev <dev@nervos.org>"]
+edition = "2018"
+license = "MIT"
+description = "STO Scripts"
+repository = "https://github.com/nervosnetwork/cto-scripts"
+include = ["src/**/*", "Cargo.toml", "specs/cells/*"]
+
+[dependencies]
+
+[dev-dependencies]
+ckb-types = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+ckb-script = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+ckb-crypto = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+ckb-dao-utils = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+ckb-hash = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+ckb-error = { git = "https://github.com/nervosnetwork/ckb.git", rev = "d75e4c5" }
+rand = "0.6.5"
+lazy_static = "1.3.0"
