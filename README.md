@@ -1,3 +1,1 @@
-# ckb production scripts
-
-CKB scripts used in production.
+# A demo for ckb scripts
