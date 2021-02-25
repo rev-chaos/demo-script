@@ -1,0 +1,8 @@
+target/
+build/
+!build/.gitkeep
+deps/ckb-c-std-lib/
+
+.DS_Store
+.idea
+.gitignore
