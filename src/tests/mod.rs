@@ -1,11 +1,12 @@
 mod demo;
+mod dynamic_load;
 
-use ckb_script::DataLoader;
+use ckb_traits::{CellDataProvider, HeaderProvider};
 use ckb_types::{
     bytes::Bytes,
     core::{
-        cell::{CellMeta, CellMetaBuilder, ResolvedTransaction},
-        BlockExt, Capacity, DepType, EpochExt, HeaderView, ScriptHashType, TransactionView,
+        cell::{CellMetaBuilder, ResolvedTransaction},
+        Capacity, DepType, EpochExt, HeaderView, ScriptHashType, TransactionView,
     },
     packed::{Byte32, CellDep, CellInput, CellOutput, OutPoint, Script, WitnessArgsBuilder},
     prelude::*,
@@ -20,9 +21,11 @@ pub const MAX_CYCLES: u64 = std::u64::MAX;
 pub const ERROR_OUTPUT_NUMBER: i8 = -99;
 
 lazy_static! {
-    pub static ref DEMO: Bytes = Bytes::from(&include_bytes!("../../build/demo")[..]);
     pub static ref ALWAYS_SUCCESS: Bytes =
         Bytes::from(&include_bytes!("../../build/always_success")[..]);
+    pub static ref DEMO: Bytes = Bytes::from(&include_bytes!("../../build/demo")[..]);
+    pub static ref DYNAMIC_LOAD: Bytes =
+        Bytes::from(&include_bytes!("../../build/dynamic_load")[..]);
 }
 
 #[derive(Default)]
@@ -38,34 +41,37 @@ impl DummyDataLoader {
     }
 }
 
-impl DataLoader for DummyDataLoader {
-    // load Cell Data
-    fn load_cell_data(&self, cell: &CellMeta) -> Option<(Bytes, Byte32)> {
-        cell.mem_cell_data.clone().or_else(|| {
-            self.cells
-                .get(&cell.out_point)
-                .map(|(_, data)| (data.clone(), CellOutput::calc_data_hash(&data)))
-        })
-    }
-    // load BlockExt
-    fn get_block_ext(&self, _hash: &Byte32) -> Option<BlockExt> {
-        unreachable!()
+impl CellDataProvider for DummyDataLoader {
+    fn get_cell_data(&self, out_point: &OutPoint) -> Option<Bytes> {
+        self.cells.get(out_point).map(|(_, data)| data.clone())
     }
 
-    // load header
-    fn get_header(&self, block_hash: &Byte32) -> Option<HeaderView> {
-        self.headers.get(block_hash).cloned()
+    fn get_cell_data_hash(&self, out_point: &OutPoint) -> Option<Byte32> {
+        self.cells
+            .get(out_point)
+            .map(|(_, data)| CellOutput::calc_data_hash(&data))
     }
+}
 
-    // load EpochExt
-    fn get_block_epoch(&self, block_hash: &Byte32) -> Option<EpochExt> {
-        self.epoches.get(block_hash).cloned()
+impl HeaderProvider for DummyDataLoader {
+    fn get_header(&self, hash: &Byte32) -> Option<HeaderView> {
+        self.headers.get(hash).cloned()
     }
 }
 
 fn build_demo_script() -> Script {
     let data_hash = CellOutput::calc_data_hash(&DEMO);
     Script::new_builder()
+        .code_hash(data_hash.clone())
+        .hash_type(ScriptHashType::Data.into())
+        .build()
+}
+
+fn build_dynamic_load_script() -> Script {
+    let args = CellOutput::calc_data_hash(&DEMO).as_bytes();
+    let data_hash = CellOutput::calc_data_hash(&DYNAMIC_LOAD);
+    Script::new_builder()
+        .args(args.pack())
         .code_hash(data_hash.clone())
         .hash_type(ScriptHashType::Data.into())
         .build()
