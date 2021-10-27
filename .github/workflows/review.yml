@@ -16,4 +16,17 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             ${{ github.event.issue.user.login }} 已 review “问题描述”！
-            
+      - name: find-problem-review-comment
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && contains(github.event.comment.body, '\approve') && contains(github.event.issue.assignees.*.login, github.event.issue.user.login))
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'find-comments'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body-includes: 'review "问题描述"'
+      - name: goto-plan
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && contains(github.event.comment.body, '\approve') && contains(github.event.issue.assignees.*.login, github.event.issue.user.login) && contains(github.event.issue.assignees.*.login, steps.find-problem-review-comment.outputs.result.*.auth))
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '方案设计'
