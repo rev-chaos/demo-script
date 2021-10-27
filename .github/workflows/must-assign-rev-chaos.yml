@@ -1,0 +1,18 @@
+name: Assign reviewers based on asignees
+
+on: 
+  issues:
+    type: [assigned]
+    
+jobs:
+  must-assign-rev-chaos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: must-assign-rev-chaos
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.assignees.*.login, 'rev-chaos'))
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            @${{ github.event.issue.user.login }}，必须指定 rev-chaos 作为 reviewers！
