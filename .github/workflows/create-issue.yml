@@ -8,7 +8,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  check-issue:
+  check-bug-issue:
     runs-on: ubuntu-latest
     steps:
       - name: check bug issue title
