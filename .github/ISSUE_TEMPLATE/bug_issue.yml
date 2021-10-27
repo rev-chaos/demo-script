@@ -1,12 +1,13 @@
 name: Bug Issue
 description: File a bug issue
 title: "[主题 issue] "
-labels: "bug"
+labels: ["bug", "问题描述"]
 body:
   - type: textarea
     id: problem
     attributes:
       label: 问题描述
+      value: "owner: \ncooperator: \n"
   - type: textarea
     id: plan
     attributes:
