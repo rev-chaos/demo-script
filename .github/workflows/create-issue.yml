@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check bug issue title
-        if: (startsWith(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && toJson(github.event.issue.assignees) != '[]')
+        if: (startsWith(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && toJson(github.event.issue.assignees) == '[]')
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment'
