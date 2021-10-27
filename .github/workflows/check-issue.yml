@@ -2,7 +2,7 @@ name: Create Issue
 
 on:
   schedule:
-    - cron: "30 * * * *"
+    - cron: "30 * * * * ?"
 
 jobs:
   create-issue:
@@ -14,5 +14,4 @@ jobs:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'xxxx'
-          body: 'xxxx'
           contents: '+1'
