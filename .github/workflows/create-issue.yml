@@ -1,8 +1,8 @@
-name: Check Issue
+name: Create Issue
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -11,16 +11,15 @@ jobs:
   check-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: check-issue
+      - name: check title
         if: (contains(github.event.issue.title, '[主题 issue]') == false)
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment,add-labels,close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          labels: 'Invalid'
           body: |
-            你好 @${{ github.event.issue.user.login }}，为了能够进行高效沟通，我们对 issue 有一定的格式要求，你的 issue 因为不符合要求而被自动关闭。谢谢配合！
+            @${{ github.event.issue.user.login }}，issue 的 title 必须以 '[主题 issue]' 为前缀，谢谢配合！
       - name: assign new issue to project
         uses: srggrs/assign-one-project-github-action@1.2.1
         with:
