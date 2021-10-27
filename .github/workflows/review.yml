@@ -17,14 +17,21 @@ jobs:
           body: |
             ${{ github.event.issue.user.login }} 已 review “问题描述”！
       - name: find-problem-review-comment
-        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && contains(github.event.comment.body, '\approve') && contains(github.event.issue.assignees.*.login, github.event.issue.user.login))
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案'))
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'find-comments'
           token: ${{ secrets.GITHUB_TOKEN }}
           body-includes: 'review "问题描述"'
+      - name: print
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            已找到 ${{ toJson(steps.find-problem-review-comment.outputs.result.*.auth) }}！
       - name: goto-plan
-        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && contains(github.event.comment.body, '\approve') && contains(github.event.issue.assignees.*.login, github.event.issue.user.login) && contains(github.event.issue.assignees.*.login, steps.find-problem-review-comment.outputs.result.*.auth))
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && contains(steps.find-problem-review-comment.outputs.result.*.auth, github.event.issue.assignees.*.login))
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'add-labels'
