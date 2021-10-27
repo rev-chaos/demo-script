@@ -1,47 +1,20 @@
-name: Test
+name: Create Issue
 
 on:
-  issues:
-    types: [edited]
+  schedule:
+    - cron: "30 * * * * ?"
 
 jobs:
-  do-test:
+  create-issue:
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'watch'
     steps:
-      - name: find comments
-        uses: actions-cool/issues-helper@v2
-        id: fcid
-        with:
-          actions: 'find-comments'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          comment-auth: k
-          body-includes: '<!-- Created by actions-cool/issues-helper -->'
-
-      # 输出查看找到的内容。GitHub 默认 outputs 为字符串
-      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
-        shell: bash
-
-      - name: create comment
-        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
+      - name: Create issue
         uses: actions-cool/issues-helper@v2
         with:
-          actions: 'create-comment'
+          actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Error
-            <!-- Created by actions-cool/issues-helper -->
-
-      - name: update comment
-        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
-        uses: actions-cool/issues-helper@v2
-        with:
-          actions: 'update-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          out-comments: ${{ steps.fcid.outputs.comments }}
-          body: |
-            Error Again
-            <!-- Created by actions-cool/issues-helper -->
-          update-mode: 'append'
+          title: 'xxxx'
+          body: 'xxxx'
+          labels: 'xx'
+          assignees: 'xxx'
+          contents: '+1'
