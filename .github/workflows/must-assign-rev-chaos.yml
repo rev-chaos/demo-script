@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: must-assign-rev-chaos
-        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.assignees.*.login, 'rev-chaos'))
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.assignees.*.login, 'rev-chaos') == false)
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment'
