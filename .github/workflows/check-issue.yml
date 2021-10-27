@@ -1,0 +1,16 @@
+name: check issue
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  check-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-issue
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'check-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title-includes: '[主题 issue]'
+          body-includes: '@rev-chaos'
