@@ -15,6 +15,6 @@ jobs:
           actions: 'create-comment,add-labels,close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          label: 'Invalid'
+          labels: 'Invalid'
           body: |
             你好 @${{ github.event.issue.user.login }}，为了能够进行高效沟通，我们对 issue 有一定的格式要求，你的 issue 因为不符合要求而被自动关闭。谢谢配合！
