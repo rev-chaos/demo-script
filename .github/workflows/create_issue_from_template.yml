@@ -1,10 +1,16 @@
-name: Create issue from template
+name: create issue from template
 on:
   issues:
-    types: opened
+    types: [opened, edited]
 
 jobs:
-  create-issue:
+  check-issue:
     runs-on: ubuntu-latest
     steps:
-      - uses: peter-evans/create-issue-from-file@v3.0.0
+      - name: check-issue
+        uses: actions-cool/issue-helper@v2
+        with:
+          actions: 'check-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title-includes: '[主题 issue]'
+          body-includes: '@rev-chaos'
