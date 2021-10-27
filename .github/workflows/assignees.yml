@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print-bug-issue-reviewer
-        if: (startsWith(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && !isEmpty(github.event.issue.assignees))
+        if: (startsWith(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案') && toJson(github.event.issue.assignees) != '[]')
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment'
