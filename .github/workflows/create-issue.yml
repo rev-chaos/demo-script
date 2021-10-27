@@ -18,7 +18,7 @@ jobs:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
           body: |
-            @${{ github.event.issue.user.login }}，请确定 “问题描述的” owner、cooperator 和 reviewer！
+            @${{ github.event.issue.user.login }}，请指定 assignees 以确定 “问题描述的” reviewers！
       - name: assign new issue to project
         uses: srggrs/assign-one-project-github-action@1.2.1
         with:
