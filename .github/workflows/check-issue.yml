@@ -1,16 +1,47 @@
-name: check issue
+name: Test
+
 on:
   issues:
-    types: [opened, edited]
+    types: [edited]
 
 jobs:
-  check-issue:
+  do-test:
     runs-on: ubuntu-latest
+    if: github.event.label.name == 'watch'
     steps:
-      - name: check-issue
+      - name: find comments
+        uses: actions-cool/issues-helper@v2
+        id: fcid
+        with:
+          actions: 'find-comments'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          comment-auth: k
+          body-includes: '<!-- Created by actions-cool/issues-helper -->'
+
+      # 输出查看找到的内容。GitHub 默认 outputs 为字符串
+      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
+        shell: bash
+
+      - name: create comment
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
         uses: actions-cool/issues-helper@v2
         with:
-          actions: 'check-issue'
+          actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
-          title-includes: '[主题 issue]'
-          body-includes: '@rev-chaos'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Error
+            <!-- Created by actions-cool/issues-helper -->
+
+      - name: update comment
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'update-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          out-comments: ${{ steps.fcid.outputs.comments }}
+          body: |
+            Error Again
+            <!-- Created by actions-cool/issues-helper -->
+          update-mode: 'append'
