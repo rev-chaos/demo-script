@@ -12,16 +12,19 @@ body:
     id: plan
     attributes:
       label: 解决方案
+      value: "owner: \ncooperator: \n"
   - type: textarea
     id: development
     attributes:
       label: 开发
+      value: "owner: \ncooperator: \n"
   - type: textarea
     id: test
     attributes:
       label: 测试
+      value: "owner: \ncooperator: \n"
   - type: textarea
     id: issue
     attributes:
       label: 发版
-      
+      value: "owner: \ncooperator: \n"
