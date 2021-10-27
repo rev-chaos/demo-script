@@ -1,50 +1,26 @@
----
 name: Bug Issue
-about: Trace a bug
-labels: t:bug-issue
----
-
-### 问题描述
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-#### Describe
-
----
-### 解决方案
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-#### Describe
-
----
-### 开发
-
-#### relative PR \#
-
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
----
-### 测试
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-
----
-### 发版
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-
----
-#### 相关链接
+description: File a bug issue
+title: "[主题 issue] "
+labels: "bug"
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题描述
+  - type: textarea
+    id: plan
+    attributes:
+      label: 解决方案
+  - type: textarea
+    id: development
+    attributes:
+      label: 开发
+  - type: textarea
+    id: test
+    attributes:
+      label: 测试
+  - type: textarea
+    id: issue
+    attributes:
+      label: 发版
+      
