@@ -9,10 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: must-assign-rev-chaos
-        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.assignees.*.login, 'rev-chaos') == false)
+        if: (contains(github.event.issue.title, '[主题 issue]') && !contains(github.event.issue.assignees.*.login, 'rev-chaos'))
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
           body: |
             @${{ github.event.issue.user.login }}，必须指定 rev-chaos 作为 reviewers！
+      - name: print-bug-issue-reviewer
+        if: (contains(github.event.issue.title, '[主题 issue]') && contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '解决方案'))
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            已指定 @${{ github.event.issue.assignees.*.login }} 作为 reviewers！
