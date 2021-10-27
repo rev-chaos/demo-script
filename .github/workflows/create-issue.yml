@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check title
-        if: (contains(github.event.issue.title, '[主题 issue]') == false)
+        if: (contains(github.event.issue.body, 't:bug-issue') == true && contains(github.event.issue.title, '[主题 issue]') == false)
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'create-comment,add-labels,close-issue'
