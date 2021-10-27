@@ -15,7 +15,7 @@ jobs:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
           body: |
-            已指定 @${{ join(github.event.issue.assignees.*.login, ', @') }} 作为 “问题描述” 的 reviewers！
+            已指定 @${{ join(github.event.issue.assignees.*.login, ', @') }} 作为 “问题描述” 的 reviewers！${{ toJson(env) }}
       - name: must-assign-rev-chaos
         if: (startsWith(github.event.issue.title, '[主题 issue]') && toJson(github.event.issue.assignees) != '[]' && !contains(github.event.issue.assignees.*.login, 'rev-chaos'))
         uses: actions-cool/issues-helper@v2
