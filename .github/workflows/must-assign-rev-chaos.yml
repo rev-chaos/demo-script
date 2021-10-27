@@ -23,4 +23,4 @@ jobs:
           actions: 'create-comment'
           issue-number: ${{ github.event.issue.number }}
           body: |
-            已指定 @${{ github.event.issue.assignees.*.login }} 作为 reviewers！
+            已指定 @${{ github.event.issue.assignee.login }} 作为 reviewers！
