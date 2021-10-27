@@ -18,3 +18,8 @@ jobs:
           labels: 'Invalid'
           body: |
             你好 @${{ github.event.issue.user.login }}，为了能够进行高效沟通，我们对 issue 有一定的格式要求，你的 issue 因为不符合要求而被自动关闭。谢谢配合！
+      - name: assign new issue to project
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        with:
+          project: 'https://github.com/rev-chaos/demo-script/projects/1'
+          column_name: 'todo'
