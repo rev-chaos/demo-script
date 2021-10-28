@@ -1,0 +1,21 @@
+name: Unassign reviewers
+
+on: 
+  issues:
+    type: [unassigned]
+    
+jobs:
+  unassigned:
+    runs-on: ubuntu-latest
+    steps:
+      - name: only-rev-chaos-can-cancel-reviewer
+        if: (startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login != 'rev-chaos')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            @${{ github.event.issue.user.login }}，只有 @rev-chaos 才能撤销 reviewer！
+      - name: rev-chaos-cancel-reviewer
+        if: (startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos')
+        run: echo "welcome rev-chaos!"
