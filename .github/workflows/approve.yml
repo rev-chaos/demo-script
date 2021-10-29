@@ -16,6 +16,12 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: '问题描述'
+      - name: move bug description
+        if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
+        uses: srggrs/assign-one-project-github-action@1.2.1
+        with:
+          project: 'https://github.com/rev-chaos/demo-script/projects/1'
+          column_name: 'Description Approved'
       - name: approve bug design
         if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '方案设计')
         uses: actions-cool/issues-helper@v2
