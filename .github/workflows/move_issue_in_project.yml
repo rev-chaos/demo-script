@@ -16,6 +16,6 @@ jobs:
         if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
         uses: alex-page/github-project-automation-plus@v0.8.0
         with:
-          project: 任务面板
+          project: Task
           column: Description Approved
           repo-token: ${{ secrets.GITHUB_TOKEN }}
