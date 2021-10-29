@@ -1,0 +1,46 @@
+name: Approve
+
+on: 
+  issue_comment:
+    type: [created]
+    
+jobs:
+  must-assign-rev-chaos:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos' && contains(github.event.comment.body, '\approve')
+    steps:
+      - name: approve description
+        if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '问题描述'
+      - name: approve design
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述' && !contains(github.event.issue.labels.*.name, '方案设计')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '方案设计'
+      - name: approve development
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '方案设计' && !contains(github.event.issue.labels.*.name, '开发')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '开发'
+      - name: approve test
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '开发' && !contains(github.event.issue.labels.*.name, '测试')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '测试'
+      - name: approve release
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '测试' && !contains(github.event.issue.labels.*.name, '发版')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'add-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: '发版'
