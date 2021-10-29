@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.0
         with:
-          projects: Task
+          project: 任务面板
           column: Description Approved
           repo-token: ${{ secrets.GHPROJECT_TOKEN }}
