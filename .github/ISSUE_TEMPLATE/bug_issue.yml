@@ -4,57 +4,67 @@ title: "[主题 issue] "
 labels: ["bug"]
 body:
   - type: markdown
-    value: "## 问题描述"
+    attributes:
+      value: |
+        ## 问题描述
   - type: textarea
     id: description-auth
     attributes:
       label: 授权
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "## 问题描述\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: description-content
     attributes:
       label: 内容
   - type: markdown
-    value: "## 解决方案"
+    attributes:
+      value: |
+        ## 解决方案
   - type: textarea
     id: design-auth
     attributes:
       label: 授权
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "## 解决方案\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: design-content
     attributes:
       label: 方案和链接
   - type: markdown
-    value: "## 开发"
+    attributes:
+      value: |
+        ## 开发
   - type: textarea
     id: development-auth
     attributes:
       label: 授权
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "## 开发\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: development-content
     attributes:
       label: PR 列表
       value: "- \n"
   - type: markdown
-    value: "## 测试"
+    attributes:
+      value: |
+        ## 测试
   - type: textarea
     id: test-auth
     attributes:
       label: 授权
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "## 测试\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: test-content
     attributes:
       label: 测试反馈
   - type: markdown
-    value: "## 发版"
+    attributes:
+      value: |
+        ## 发版
   - type: textarea
     id: release-auth
     attributes:
       label: 授权
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "## 发版\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: release-content
     attributes:
