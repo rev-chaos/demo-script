@@ -3,10 +3,28 @@ description: File a bug issue
 title: "[主题 issue] "
 labels: ["bug"]
 body:
-  - type: textarea
-    id: description
+  - type: markdown
     attributes:
-      value: "## 问题描述\n- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: |
+        ## 问题描述
+  - type: input
+      id: description-owner
+      attributes:
+        label: owner
+      validations:
+        required: true
+  - type: input
+      id: description-cooperator
+      attributes:
+        label: cooperator
+      validations:
+        required: false
+   - type: input
+      id: description-reviewer
+      attributes:
+        label: reviewer
+      validations:
+        required: true
   - type: textarea
     id: plan
     attributes:
