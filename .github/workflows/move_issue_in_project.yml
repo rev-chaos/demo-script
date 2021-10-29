@@ -11,8 +11,9 @@ jobs:
   move-project:
     runs-on: ubuntu-latest
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.8.0
+      - name: approve bug description
+        if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
+        uses: srggrs/assign-one-project-github-action@1.2.1
         with:
-          project: 任务面板
-          column: Description Approved
-          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+          project: 'https://github.com/rev-chaos/demo-script/projects/1'
+          column_name: 'Description Approved'
