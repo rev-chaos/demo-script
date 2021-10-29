@@ -15,4 +15,4 @@ jobs:
         with:
           projects: Task
           column: Description Approved
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
