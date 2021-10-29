@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: '问题描述'
       - name: approve bug design
-        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '方案设计')
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '解决方案')
         uses: actions-cool/issues-helper@v2
         with:
           actions: 'add-labels'
