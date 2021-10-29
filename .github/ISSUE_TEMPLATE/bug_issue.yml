@@ -6,7 +6,7 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: 背景描述
+      label: 问题描述
       value: "- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: plan
