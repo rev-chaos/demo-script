@@ -4,9 +4,7 @@ title: "[主题 issue] "
 labels: ["bug"]
 body:
   - type: markdown
-    attributes:
-      value: |
-        ## 问题描述
+    value: "## 问题描述"
   - type: textarea
     id: description-auth
     attributes:
@@ -17,9 +15,7 @@ body:
     attributes:
       label: 内容
   - type: markdown
-    attributes:
-      value: |
-        ## 解决方案
+    value: "## 解决方案"
   - type: textarea
     id: design-auth
     attributes:
@@ -30,9 +26,7 @@ body:
     attributes:
       label: 方案和链接
   - type: markdown
-    attributes:
-      value: |
-        ## 开发
+    value: "## 开发"
   - type: textarea
     id: development-auth
     attributes:
@@ -44,9 +38,7 @@ body:
       label: PR 列表
       value: "- \n"
   - type: markdown
-    attributes:
-      value: |
-        ## 测试
+    value: "## 测试"
   - type: textarea
     id: test-auth
     attributes:
@@ -57,9 +49,7 @@ body:
     attributes:
       label: 测试反馈
   - type: markdown
-    attributes:
-      value: |
-        ## 发版
+    value: "## 发版"
   - type: textarea
     id: release-auth
     attributes:
