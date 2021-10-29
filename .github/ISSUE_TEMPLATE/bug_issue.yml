@@ -10,7 +10,7 @@ body:
   - type: textarea
     id: description-auth
     attributes:
-      label: 授权
+      label: \n
       value: "## 问题描述\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: description-content
@@ -23,7 +23,7 @@ body:
   - type: textarea
     id: design-auth
     attributes:
-      label: 授权
+      label: \n
       value: "## 解决方案\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: design-content
@@ -36,7 +36,7 @@ body:
   - type: textarea
     id: development-auth
     attributes:
-      label: 授权
+      label: \n
       value: "## 开发\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: development-content
@@ -50,7 +50,7 @@ body:
   - type: textarea
     id: test-auth
     attributes:
-      label: 授权
+      label: \n
       value: "## 测试\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: test-content
@@ -63,7 +63,7 @@ body:
   - type: textarea
     id: release-auth
     attributes:
-      label: 授权
+      label: \n
       value: "## 发版\n- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: release-content
