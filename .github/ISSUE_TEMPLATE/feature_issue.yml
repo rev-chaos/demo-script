@@ -1,7 +1,7 @@
 name: Feature Issue
 description: File a feature issue
 title: "[主题 issue] "
-labels: ["feature"]
+labels: ["feature", "task"]
 body:
 body:
   - type: textarea
