@@ -5,7 +5,7 @@ on:
     type: [created]
     
 jobs:
-  must-assign-rev-chaos:
+  approve-subject-issue:
     runs-on: ubuntu-latest
     if: startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos' && contains(github.event.comment.body, '\approve')
     steps:
