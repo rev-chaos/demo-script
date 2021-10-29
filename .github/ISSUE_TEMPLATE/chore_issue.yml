@@ -3,22 +3,33 @@ description: File a chore issue
 title: "[主题 issue] "
 labels: ["chore"]
 body:
+body:
   - type: textarea
-    id: description
+    id: description-content
     attributes:
-      label: 背景描述
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      label:  背景描述
   - type: textarea
-    id: plan
+    id: description-auth
+    attributes:
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
+  - type: textarea
+    id: design-content
     attributes:
       label: 方案设计
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "\n\n\n#### 资料链接\n* "
   - type: textarea
-    id: deployment
+    id: design-auth
+    attributes:
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
+  - type: textarea
+    id: release-content
     attributes:
       label: 方案落实
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+      value: "#### 落实反馈\n* "
   - type: textarea
-    id: link
+    id: release-auth
     attributes:
-      label: 相关链接
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
