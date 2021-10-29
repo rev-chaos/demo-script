@@ -16,7 +16,7 @@ body:
     id: design-content
     attributes:
       label: 解决方案
-      value: "\n\n\n### 资料链接\n* "
+      value: "\n\n\n#### 资料链接\n* "
   - type: textarea
     id: design-auth
     attributes:
@@ -26,7 +26,7 @@ body:
     id: development-content
     attributes:
       label: 开发
-      value: "### 开发 PR 列表\n* "
+      value: "#### 开发 PR 列表\n* "
   - type: textarea
     id: development-auth
     attributes:
@@ -36,7 +36,7 @@ body:
     id: test-content
     attributes:
       label: 测试
-      value: "### 测试反馈\n* "
+      value: "#### 测试反馈\n* "
   - type: textarea
     id: test-auth
     attributes:
@@ -45,7 +45,7 @@ body:
     id: release-content
     attributes:
       label: 发版
-      value: "## 发版 PR\n* "
+      value: "#### 发版 PR\n* "
   - type: textarea
     id: release-auth
     attributes:
