@@ -26,8 +26,8 @@ body:
   - type: textarea
     id: release-content
     attributes:
-      label: 方案落实
-      value: "#### 落实反馈\n* "
+      label: 方案落地
+      value: "#### 落地反馈\n* "
   - type: textarea
     id: release-auth
     attributes:
