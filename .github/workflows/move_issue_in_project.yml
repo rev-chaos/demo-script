@@ -1,8 +1,8 @@
 name: Approve
 
 on: 
-  issue_comment:
-    type: [created]
+  issues:
+    type: [update]
     
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: approve bug description
         if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
-        uses: srggrs/assign-one-project-github-action@1.2.1
+        uses: alex-page/github-project-automation-plus@v0.8.0
         with:
-          project: 'https://github.com/rev-chaos/demo-script/projects/1'
-          column_name: 'Description Approved'
+          project: '任务面板'
+          column: 'Description Approved'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
