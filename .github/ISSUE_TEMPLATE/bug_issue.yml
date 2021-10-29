@@ -7,7 +7,7 @@ body:
     id: problem
     attributes:
       label: 问题描述
-      value: "- owner: \n- cooperator: \n- reviewer: \n"
+      value: "| Owner | Cooperator | Reviewer |\n| :---: | ---------- | -------- |\n|       |            |          |\n"
   - type: textarea
     id: plan
     attributes:
