@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: assign new subject issue to project
-        if: (startsWith(github.event.issue.title, '[主题 issue]'))
+        if: contains(github.event.issue.labels.*.name, 'task')
         uses: srggrs/assign-one-project-github-action@1.2.1
         with:
           project: 'https://github.com/rev-chaos/demo-script/projects/1'
