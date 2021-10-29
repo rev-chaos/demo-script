@@ -3,70 +3,51 @@ description: File a bug issue
 title: "[主题 issue] "
 labels: ["bug"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ## 问题描述
-  - type: textarea
-    id: description-auth
-    attributes:
-      label:  Description
-      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
   - type: textarea
     id: description-content
     attributes:
-      label: Detail
-      value: "\n\n\n---"
-  - type: markdown
-    attributes:
-      value: |
-        ## 解决方案
+      label:  问题描述
   - type: textarea
-    id: design-auth
+    id: description-auth
     attributes:
-      label: Solution
-      value: "## 解决方案\n- owner: \n- cooperator: \n- reviewer: \n\n"
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
   - type: textarea
     id: design-content
     attributes:
-      label: 方案和链接
-  - type: markdown
-    attributes:
-      value: |
-        ## 开发
+      label: 解决方案
+      value: "\n\n\n###资料链接\n* "
   - type: textarea
-    id: development-auth
+    id: design-auth
     attributes:
-      label: Development
-      value: "## 开发\n- owner: \n- cooperator: \n- reviewer: \n\n"
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
   - type: textarea
     id: development-content
     attributes:
-      label: PR 列表
-      value: "- \n"
-  - type: markdown
-    attributes:
-      value: |
-        ## 测试
+      label: 开发
+      value: "###开发 PR 列表\n* "
   - type: textarea
-    id: test-auth
+    id: development-auth
     attributes:
-      label: Test
-      value: "## 测试\n- owner: \n- cooperator: \n- reviewer: \n\n"
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
   - type: textarea
     id: test-content
     attributes:
-      label: 测试反馈
-  - type: markdown
-    attributes:
-      value: |
-        ## 发版
+      label: 测试
+      value: "###测试反馈\n* "
   - type: textarea
-    id: release-auth
+    id: test-auth
     attributes:
-      label: Release
-      value: "## 发版\n- owner: \n- cooperator: \n- reviewer: \n\n"
+      label: 授权
   - type: textarea
     id: release-content
     attributes:
-      label: 发版反馈
+      label: 发版
+      value: "## 发版 PR\n* "
+  - type: textarea
+    id: release-auth
+    attributes:
+      label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
