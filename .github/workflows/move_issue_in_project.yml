@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.0
         with:
-          project: Task
+          projects: Task
           column: Description Approved
           repo-token: ${{ secrets.GITHUB_TOKEN }}
