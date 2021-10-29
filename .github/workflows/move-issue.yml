@@ -17,7 +17,7 @@ jobs:
           column: 'Description Approved'
           repo-token: ${{ secrets.GHPROJECT_TOKEN }}
       - name: approve bug design
-        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '方案设计')
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '解决方案')
         uses: alex-page/github-project-automation-plus@v0.8.1
         with:
           project: '任务面板'
