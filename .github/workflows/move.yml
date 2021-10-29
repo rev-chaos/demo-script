@@ -1,17 +1,15 @@
-name: Approve
+name: Move
 
 on: 
-  issues:
-    type: [update]
+  issue_comment:
+    type: [created]
     
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-  
 jobs:
-  move-project:
+  move-subject-issue:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos' && contains(github.event.comment.body, '\approve')
     steps:
-      - name: approve bug description
+      - name: move bug description
         if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
         uses: alex-page/github-project-automation-plus@v0.8.1
         with:
