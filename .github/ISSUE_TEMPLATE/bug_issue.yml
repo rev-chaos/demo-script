@@ -8,23 +8,23 @@ body:
       value: |
         ## 问题描述
   - type: input
-      id: description-owner
-      attributes:
-        label: owner
-      validations:
-        required: true
+    id: description-owner
+    attributes:
+      label: owner
+    validations:
+      required: true
   - type: input
-      id: description-cooperator
-      attributes:
-        label: cooperator
-      validations:
-        required: false
-   - type: input
-      id: description-reviewer
-      attributes:
-        label: reviewer
-      validations:
-        required: true
+    id: description-cooperator
+    attributes:
+      label: cooperator
+    validations:
+      required: false
+  - type: input
+    id: description-reviewer
+    attributes:
+      label: reviewer
+    validations:
+      required: true
   - type: textarea
     id: plan
     attributes:
