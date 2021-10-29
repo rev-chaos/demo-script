@@ -8,7 +8,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  check-bug-issue:
+  assign-project:
     runs-on: ubuntu-latest
     steps:
       - name: assign new subject issue to project
