@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: approve bug description
         if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
-        uses: alex-page/github-project-automation-plus@v0.8.1
+        uses: alex-page/github-project-automation-plus@v0.8.0
         with:
           project: 'https://github.com/rev-chaos/demo-script/projects/1'
           column: 'Description Approved'
