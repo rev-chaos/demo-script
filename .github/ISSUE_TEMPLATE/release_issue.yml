@@ -1,7 +1,7 @@
 name: Release Issue
 description: File a release issue
 title: "[主题 issue] "
-labels: ["release"]
+labels: ["release", "task"]
 body:
 body:
   - type: textarea
