@@ -1,0 +1,34 @@
+name: Approve
+
+on: 
+  issue_comment:
+    type: [created]
+    
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+jobs:
+  approve-subject-issue:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos' && contains(github.event.comment.body, '\approve')
+    steps:
+      - name: approve bug release
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issue'
+      - name: approve feature release
+        if: contains(github.event.issue.labels.*.name, 'feature') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issue'
+      - name: approve release release
+        if: contains(github.event.issue.labels.*.name, 'release') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issue'
+      - name: approve chore test
+        if: contains(github.event.issue.labels.*.name, 'chore') && contains(github.event.issue.labels.*.name, '方案设计') && !contains(github.event.issue.labels.*.name, '方案落地')
+        uses: actions-cool/issues-helper@v2
+        with:
+          actions: 'close-issue'
