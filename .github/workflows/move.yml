@@ -9,10 +9,122 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.event.issue.title, '[主题 issue]') && github.event.issue.user.login == 'rev-chaos' && contains(github.event.comment.body, '\approve')
     steps:
-      - name: move bug description
+      - name: approve bug description
         if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.labels.*.name, '问题描述')
         uses: alex-page/github-project-automation-plus@v0.8.1
         with:
           project: '任务面板'
           column: 'Description Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve bug design
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '问题描述') && !contains(github.event.issue.labels.*.name, '方案设计')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Design Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve bug development
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '解决方案') && !contains(github.event.issue.labels.*.name, '开发')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Development Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve bug test
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '开发') && !contains(github.event.issue.labels.*.name, '测试')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Test Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve bug release
+        if: contains(github.event.issue.labels.*.name, 'bug') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Deploy & Release Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve feature description
+        if: contains(github.event.issue.labels.*.name, 'feature') && !contains(github.event.issue.labels.*.name, '需求描述')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Description Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve feature design
+        if: contains(github.event.issue.labels.*.name, 'feature') && contains(github.event.issue.labels.*.name, '需求描述') && !contains(github.event.issue.labels.*.name, '方案设计')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Design Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve feature development
+        if: contains(github.event.issue.labels.*.name, 'feature') && contains(github.event.issue.labels.*.name, '方案设计') && !contains(github.event.issue.labels.*.name, '开发')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Development Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve feature test
+        if: contains(github.event.issue.labels.*.name, 'feature') && contains(github.event.issue.labels.*.name, '开发') && !contains(github.event.issue.labels.*.name, '测试')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Test Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve feature release
+        if: contains(github.event.issue.labels.*.name, 'feature') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Deploy & Release Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve release description
+        if: contains(github.event.issue.labels.*.name, 'release') && !contains(github.event.issue.labels.*.name, '发版目标')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Description Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve release development
+        if: contains(github.event.issue.labels.*.name, 'release') && contains(github.event.issue.labels.*.name, '发版目标') && !contains(github.event.issue.labels.*.name, '开发')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Development Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve release test
+        if: contains(github.event.issue.labels.*.name, 'release') && contains(github.event.issue.labels.*.name, '开发') && !contains(github.event.issue.labels.*.name, '测试')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Test Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve release release
+        if: contains(github.event.issue.labels.*.name, 'release') && contains(github.event.issue.labels.*.name, '测试') && !contains(github.event.issue.labels.*.name, '发版')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Deploy & Release Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve chore description
+        if: contains(github.event.issue.labels.*.name, 'chore') && !contains(github.event.issue.labels.*.name, '背景描述')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Description Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve chore development
+        if: contains(github.event.issue.labels.*.name, 'chore') && contains(github.event.issue.labels.*.name, '背景描述') && !contains(github.event.issue.labels.*.name, '方案设计')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Design Approved'
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+      - name: approve chore test
+        if: contains(github.event.issue.labels.*.name, 'chore') && contains(github.event.issue.labels.*.name, '方案设计') && !contains(github.event.issue.labels.*.name, '方案落地')
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: '任务面板'
+          column: 'Deploy & Release Approved'
           repo-token: ${{ secrets.GHPROJECT_TOKEN }}
