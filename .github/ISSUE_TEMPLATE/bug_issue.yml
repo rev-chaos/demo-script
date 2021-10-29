@@ -26,6 +26,10 @@ body:
     validations:
       required: true
   - type: textarea
+    id: description-content
+    attributes:
+      label: 内容
+  - type: textarea
     id: plan
     attributes:
       label: 解决方案
