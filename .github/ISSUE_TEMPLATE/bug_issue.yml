@@ -41,6 +41,7 @@ body:
     id: test-auth
     attributes:
       label: 授权
+      value: "* owner: \n* cooperator: \n* reviewer: \n\n---"
   - type: textarea
     id: release-content
     attributes:
