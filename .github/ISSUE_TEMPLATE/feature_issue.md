@@ -1,50 +1,34 @@
----
 name: Feature Issue
-about: Develop a feature
-labels: t:feat-issue
----
-
-### 需求描述
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-#### Describe
-
----
-### 设计方案
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-#### Describe
-
----
-### 开发
-
-#### relative PR \#
-
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
----
-### 测试
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-
----
-### 发版
-
-| Owner | Cooperator | Reviewer |
-| :---: | ---------- | -------- |
-|       |            |          |
-
-
----
-#### 相关链接
+description: File a feature issue
+title: "[主题 issue] "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 背景描述
+      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+  - type: textarea
+    id: plan
+    attributes:
+      label: 方案设计
+      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+  - type: textarea
+    id: development
+    attributes:
+      label: 开发
+      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+  - type: textarea
+    id: test
+    attributes:
+      label: 测试
+      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+  - type: textarea
+    id: issue
+    attributes:
+      label: 发版
+      value: "- owner: \n- cooperator: \n- reviewer: \n\n"
+  - type: textarea
+    id: link
+    attributes:
+      label: 相关链接
